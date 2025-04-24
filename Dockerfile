@@ -60,7 +60,7 @@ RUN install_packages ca-certificates curl && \
     rm -rf /var/log/* && \
     rm -rf /var/lib/dpkg/status /var/lib/dpkg/status-old;
 
-COPY --from=builder /builder/src/target/release/plist-server /app/plist-server
+COPY --from=builder /builder/target/release/plist-server /app/plist-server
 
 EXPOSE 8080
 
