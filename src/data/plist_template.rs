@@ -11,7 +11,7 @@ pub static PLIST_TEMPLATE: &str = r#"<?xml version="1.0" encoding="UTF-8"?>
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>{fetch_url}/tempsigned.ipa</string>
+                    <string>{fetch_url}</string>
                 </dict>
             </array>
             <key>metadata</key>
