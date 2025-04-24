@@ -10,12 +10,12 @@ use axum::{
 use crate::data::plist_query::PlistQuery;
 
 pub async fn get_gen_plist(Query(params): Query<HashMap<String, String>>) -> Response {
-  let plist_query = PlistQuery {
-      bundleid: params.get("bundleid").map(|s| s.to_string()).unwrap_or_default(),
-      version: params.get("version").map(|s| s.to_string()).unwrap_or_default(),
-      name: params.get("name").map(|s| s.to_string()).unwrap_or_default(),
-      fetchurl: params.get("fetchurl").map(|s| s.to_string()).unwrap_or_default(),
-  };
+    let plist_query = PlistQuery {
+        bundleid: params.get("bundleid").map(|s| s.to_string()).unwrap_or_default(),
+        version: params.get("version").map(|s| s.to_string()).unwrap_or_default(),
+        name: params.get("name").map(|s| s.to_string()).unwrap_or_default(),
+        fetchurl: params.get("fetchurl").map(|s| s.to_string()).unwrap_or_default(),
+    };
 
     let plist_xml = plist_query.build_template();
 
