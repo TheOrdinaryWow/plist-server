@@ -11,13 +11,13 @@ pub static PLIST_TEMPLATE: &str = r#"<?xml version="1.0" encoding="UTF-8"?>
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>{fetchurl}/tempsigned.ipa</string>
+                    <string>{fetch_url}/tempsigned.ipa</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>{bundleid}</string>
+                <string>{bundle_id}</string>
                 <key>bundle-version</key>
                 <string>{version}</string>
                 <key>kind</key>

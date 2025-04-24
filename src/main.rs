@@ -61,7 +61,7 @@ async fn main() {
         }
     };
 
-    info!("plist-server is listening on {}", listen_addr);
+    info!("plist-server is listening on {}", &listen_addr);
 
     if let Err(e) = axum::serve(listener, router).await {
         error!("Failed to start server: {}", e);
