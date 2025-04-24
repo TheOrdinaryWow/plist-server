@@ -1,0 +1,33 @@
+cargo-features = ["profile-rustflags"]
+
+[package]
+name = "plist-server"
+version = "0.1.0"
+edition = "2024"
+
+[profile.release]
+opt-level = 3                          # Optimize for size.
+lto = true                             # Enable Link Time Optimization
+codegen-units = 1                      # Reduce number of codegen units to increase optimizations.
+panic = "abort"                        # Abort on panic
+strip = true                           # Automatically strip symbols from the binary.
+rustflags = ["-Zlocation-detail=none"]
+
+[dependencies]
+# Async
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+# Serde
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1" }
+
+# HTTP
+axum = { version = "0" }
+tower-http = { version = "0", features = ["trace", "compression-full", "timeout"] }
+
+# Tracing
+tracing = { version = "0" }
+tracing-subscriber = { version = "0", features = ["tracing", "env-filter"] }
+
+# Utils
+dotenvy = { version = "0" }

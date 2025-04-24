@@ -1,0 +1,46 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task: build:release
+
+  clean:
+    desc: Clean build artifacts
+    cmds:
+      - cargo clean
+
+  run:
+    desc: Run the application without building
+    cmds:
+      - cargo run --release
+
+  build:release:
+    desc: Build for current target platform
+    generates:
+      - target/release
+    deps:
+      - task: clean
+    cmds:
+      - cargo build --release
+
+  build:release-opt:
+    desc: Build for current target platform, with size-optimized binary
+    generates:
+      - target/release
+    deps:
+      - task: clean
+    cmds:
+      - cargo build --release -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort,optimize_for_size
+
+  docker:build:
+    desc: Build Docker image
+    cmds:
+      - docker build -t plist-server .
+
+  docker:run:
+    desc: Run Docker image
+    cmds:
+      - docker run -p 8080:8080 plist-server
